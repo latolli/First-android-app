@@ -55,7 +55,7 @@ fun NavigationAppHost(navController: NavHostController) {
             HomeScreen(navController)
         }
         composable(Destination.Profile.route) {
-            ProfileScreen(navController)
+            ProfileScreen(navController, modifier = Modifier)
         }
     }
 }

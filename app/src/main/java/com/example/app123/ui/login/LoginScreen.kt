@@ -70,7 +70,7 @@ fun LoginScreen(
             shape = RoundedCornerShape(corner = CornerSize(50.dp))
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(30.dp))
 
         Button(onClick = {
             if (username.value == correct_username && password.value == correct_password) {
