@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">app123</string>
     <string name="title">Welcome to app123</string>
+    <string name="new_reminder">Add</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Log out</string>
+    <string name="home">Home</string>
 </resources>
