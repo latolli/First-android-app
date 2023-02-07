@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.app123.Destination
 import com.example.app123.ui.theme.App123Theme
 import com.example.app123.ui.theme.GreyDark
 
@@ -28,7 +30,9 @@ fun HomeScreen(
         Scaffold(
             bottomBar = { BottomNavBar(navController = navHostController)},
             floatingActionButtonPosition = FabPosition.End,
-            floatingActionButton = { FloatingActionButton(onClick = {}, backgroundColor = GreyDark){
+            floatingActionButton = { FloatingActionButton(onClick = {
+                navHostController.navigate(Destination.NewReminder.route)
+            }, backgroundColor = GreyDark){
                 Text("+")
             } },
             content = { HomeScreenContent() }
@@ -43,6 +47,7 @@ fun HomeScreenContent () {
             (1..20).map{
                 ListItem(
                     title = "Reminder $it",
+                    timestamp = "12.43",
                     isSelected = false
                 )
             }
@@ -70,7 +75,22 @@ fun HomeScreenContent () {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = items[i].title, color = Color.Black)
+                Column() {
+                    Text(text = items[i].title, color = Color.Black)
+                }
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Icon(
+                        painter = rememberVectorPainter(Icons.Filled.Notifications),
+                        contentDescription = "check icon",
+                        tint = MaterialTheme.colors.background,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Text(text = items[i].timestamp, color = Color.Black)
+                }
+                /*
                 if(items[i].isSelected) {
                     Icon(
                         painter = rememberVectorPainter(Icons.Filled.CheckCircle),
@@ -78,7 +98,7 @@ fun HomeScreenContent () {
                         tint = MaterialTheme.colors.background,
                         modifier = Modifier.size(20.dp)
                     )
-                }
+                }*/
             }
         }
     }

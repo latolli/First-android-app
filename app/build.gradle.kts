@@ -1,6 +1,8 @@
 plugins {
     id ("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.dagger.hilt.android")
+    kotlin("kapt")
 }
 
 android {
@@ -45,15 +47,20 @@ android {
         }
     }
 }
-
+//add dependencies from buildSrc folder
 dependencies {
+    implementation(project(":core-database"))
+    implementation(project(":core-data"))
+    implementation(project(":core-domain"))
 
     implementation (androidx.core.ktx)
     implementation (androidx.lifecycle.runtimektx)
+    implementation (androidx.lifecycle.compose)
     implementation (androidx.activity.activity)
     implementation (androidx.compose.ui.ui)
     implementation (androidx.compose.ui.preview)
     implementation (androidx.compose.material)
+
     testImplementation (androidx.junit.junit)
     androidTestImplementation (androidx.test.ext.junit)
     androidTestImplementation (androidx.test.espresso.core)
@@ -61,4 +68,13 @@ dependencies {
     debugImplementation (androidx.compose.ui.tooling)
     debugImplementation (androidx.compose.ui.manifest)
     implementation (androidx.navigation.navigation)
+
+    //hilt
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android-gradle-plugin:2.44")
+}
+
+kapt {
+    correctErrorTypes = true
 }

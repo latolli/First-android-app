@@ -18,6 +18,7 @@ object androidx {
     object lifecycle {
         private val version = "2.3.1"
         val runtimektx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
+        val compose = "androidx.lifecycle:lifecycle-viewmodel-compose:$version"
     }
     object activity {
         private val version = "1.3.1"

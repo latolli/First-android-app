@@ -3,8 +3,9 @@ package com.example.core.data.datasource.payment
 import com.example.code.domain.entity.Payment
 import com.example.core.database.dao.PaymentDao
 import com.example.core.database.entity.PaymentEntity
+import javax.inject.Inject
 
-class PaymentDataSourceImp (
+class PaymentDataSourceImp @Inject constructor(
     private val paymentDao: PaymentDao
         ): PaymentDataSource{
     override suspend fun addPayment(payment: Payment) {
